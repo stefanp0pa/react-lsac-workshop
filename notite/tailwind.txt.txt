@@ -1,0 +1,8 @@
+-> Why Tailwind CSS (vs. Bootstrap)
+
+-> customization, and the Bootstrap classes are fairly limited and you are kind of stuck with them
+-> if you don't like something specifically, you have to override with inline-styles in Bootstrap
+
+-> Why not use Tailwind?
+	- if you do not know CSS enough, Tailwind may be a little tougher to employ
+	- if you are in a rush, Bootstrap is better for prototyping
