@@ -7,3 +7,5 @@
 - React Router
 - Axios and backend communication
 - Bonus: Tailwind CSS
+
+## Project theme: Simple Trello Board
