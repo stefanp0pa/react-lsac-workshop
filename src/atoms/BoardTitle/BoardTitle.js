@@ -8,7 +8,7 @@ export default function BoardTitle(props) {
             text-center 
             text-white  
             text-2xl">
-            In Progress 
+            {props.title} 
         </div>
     );
 }

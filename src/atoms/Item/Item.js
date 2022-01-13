@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Item() {
+export default function Item(props) {
     return (
         <div className="text-white text-xl p-2 truncate">
-            Item dasda dasda asdads aad asd aad asdad asdad dasd adasd asd
+            {props.title}
         </div>
     );
 }
