@@ -11,13 +11,17 @@ export default function Workspace() {
     const [progressTasks, setProgressTasks] = useState(['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug']);
     const [doneTasks, setDoneTasks] = useState(['Task 7', 'Task 8']);
 
+    const addNewTask = (newTask) => {
+        console.log("[Workspace] New task: " + newTask);
+    }
+
     return (
         <div>
             <h1 className="text-center mt-10 text-3xl font-bold">
                 Trello Board
             </h1>
             <div>
-                <AddTaskForm />
+                <AddTaskForm addNewTask = {addNewTask}/>
             </div>
             <div className="flex flex-row justify-between mt-10 ml-4 mr-4">
                 <Board className="mr-1" title={boardTitles[0]} items={toDoTasks}/>
