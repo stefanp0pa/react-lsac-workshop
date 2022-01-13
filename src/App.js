@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route path="/about">
             <About />
