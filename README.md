@@ -114,6 +114,8 @@ To set up Tailwind for our project, follow the [link](https://tailwindcss.com/do
 
 ## Project theme: Simple Trello Board
 
+![lsac-trello](resources/lsac-trello.png)
+
 ## Useful links
 * [React Router](https://v5.reactrouter.com/web/guides/quick-start) (for this workshop, try to install the old version 5)
 * [Set up Tailwind CSS for React app](https://tailwindcss.com/docs/guides/create-react-app)
@@ -123,5 +125,4 @@ To set up Tailwind for our project, follow the [link](https://tailwindcss.com/do
 * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
   - [useState](https://reactjs.org/docs/hooks-state.html)
   - [useEffect](https://reactjs.org/docs/hooks-effect.html)
-  - [useCallback](https://dmitripavlutin.com/dont-overuse-react-usecallback/)
   - [useContext](https://dmitripavlutin.com/react-context-and-usecontext/)

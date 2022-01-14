@@ -11,9 +11,9 @@ async function fetchBoardTitles() {
 
 async function fetchTasks() {
     return await Promise.resolve({
-        toDoTasks: ['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"],
-        progressTasks: ['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug'],
-        doneTasks: ['Task 7', 'Task 8']
+        toDoTasks: ['Write API documentation', 'Set up database connection', 'Fix the profile icon bug', 'Write the authentication', "Design a login form", "Implement React"],
+        progressTasks: ['Write a controller for payments', 'Test the profile page', 'Fix the last week bug'],
+        doneTasks: ['Set up an error-handler', 'Plan the Jira Board']
     });
 }
 
