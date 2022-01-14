@@ -3,7 +3,7 @@ import Board from '../../components/Board/Board';
 import AddTaskForm from '../../components/AddTaskForm/AddTaskForm';
 
 import { useState, useEffect } from 'react';
-
+import { createContext } from 'react';
 
 async function fetchBoardTitles() {
     return await Promise.resolve(['To Do', 'In Progress', 'Done']);
@@ -16,6 +16,8 @@ async function fetchTasks() {
         doneTasks: ['Task 7', 'Task 8']
     });
 }
+
+export const WorkspaceContext = createContext(null);
 
 export default function Workspace() {
 
@@ -106,8 +108,15 @@ export default function Workspace() {
         setTasks({...tasks, doneTasks: newDone});
     }
 
+    const workspaceHandlers = { 
+        upgradeToDoProgress, 
+        downgradeProgressToDo, 
+        upgradeProgressDone, 
+        downgradeDoneProgress
+    };
+
     return (
-        <div>
+        <WorkspaceContext.Provider value = { workspaceHandlers }>
             <h1 className="text-center mt-10 text-3xl font-bold">
                 Trello Board
             </h1>
@@ -115,27 +124,15 @@ export default function Workspace() {
                 <AddTaskForm addNewTask = {addNewTask}/>
             </div>
             <div className="flex flex-row justify-between mt-10 ml-4 mr-4">
-                <Board className="mr-1" title={boardTitles[0]} items={tasks.toDoTasks} 
-                    upgradeProgressDone={upgradeProgressDone} 
-                    downgradeDoneProgress={downgradeDoneProgress}
-                    downgradeProgressToDo={downgradeProgressToDo}
-                    upgradeToDoProgress={upgradeToDoProgress}
+                <Board className="mr-1" title={boardTitles[0]} items={tasks.toDoTasks}
                     deleteTask = {deleteTaskFromTodo}/>
 
                 <Board className="mr-1" title={boardTitles[1]} items={tasks.progressTasks}
-                    upgradeProgressDone={upgradeProgressDone}
-                    downgradeDoneProgress={downgradeDoneProgress}
-                    downgradeProgressToDo={downgradeProgressToDo}
-                    upgradeToDoProgress={upgradeToDoProgress}
                     deleteTask = {deleteTaskFromProgress}/>
 
                 <Board className="mr-1" title={boardTitles[2]} items={tasks.doneTasks}
-                    upgradeProgressDone={upgradeProgressDone}
-                    downgradeDoneProgress={downgradeDoneProgress}
-                    downgradeProgressToDo={downgradeProgressToDo}
-                    upgradeToDoProgress={upgradeToDoProgress}
                     deleteTask = {deleteTaskFromDone}/>
             </div>
-        </div>
+        </WorkspaceContext.Provider>
     );
 }

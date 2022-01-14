@@ -2,21 +2,29 @@ import React from 'react';
 import Item from '../../atoms/Item/Item';
 import BoardTitle from '../../atoms/BoardTitle/BoardTitle';
 
+import { useContext } from 'react';
+import { WorkspaceContext } from '../../pages/Workspace/Workspace';
+
 export default function Board(props) {
+
+    const { upgradeToDoProgress, 
+        downgradeProgressToDo, 
+        upgradeProgressDone, 
+        downgradeDoneProgress } = useContext(WorkspaceContext);
 
     const handleItemDowngrade = (title, origin) => {
         if (origin === "In Progress") {
-            props.downgradeProgressToDo(title);
+            downgradeProgressToDo(title);
         } else if (origin === "Done") {
-            props.downgradeDoneProgress(title);
+            downgradeDoneProgress(title);
         } else return;
     }
 
     const handleItemUpgrade = (title, origin) => {
         if (origin === "To Do") {
-            props.upgradeToDoProgress(title);
+            upgradeToDoProgress(title);
         } else if (origin === "In Progress") {
-            props.upgradeProgressDone(title);
+            upgradeProgressDone(title);
         }  else return;
     }
 
