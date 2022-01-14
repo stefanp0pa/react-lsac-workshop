@@ -5,8 +5,6 @@ import BoardTitle from '../../atoms/BoardTitle/BoardTitle';
 export default function Board(props) {
 
     const handleItemDowngrade = (title, origin) => {
-        console.log("[Board] Downgrading item: " + title);
-
         if (origin === "In Progress") {
             props.downgradeProgressToDo(title);
         } else if (origin === "Done") {
@@ -15,13 +13,15 @@ export default function Board(props) {
     }
 
     const handleItemUpgrade = (title, origin) => {
-        console.log("[Board] Upgrading item: " + title);
-
         if (origin === "To Do") {
             props.upgradeToDoProgress(title);
         } else if (origin === "In Progress") {
             props.upgradeProgressDone(title);
         }  else return;
+    }
+
+    const handleItemDelete = (title) => {
+        props.deleteTask(title);
     }
 
     return (
@@ -34,7 +34,12 @@ export default function Board(props) {
                     !props.items || props.items.length === 0 ? <p className="text-white text-xl p-2">No items</p> 
                     : props.items.map((item, index) => {
                             return (
-                                <Item key={index} title={item} boardTitle = {props.title} handleItemDowngrade = {handleItemDowngrade} handleItemUpgrade = {handleItemUpgrade}/>
+                                <Item key={index} 
+                                    title={item} 
+                                    boardTitle = {props.title} 
+                                    handleItemDowngrade = {handleItemDowngrade} 
+                                    handleItemUpgrade = {handleItemUpgrade}
+                                    handleItemDelete = {handleItemDelete}/>
                             );
                         })
                 }

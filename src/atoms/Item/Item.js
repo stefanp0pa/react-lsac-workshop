@@ -1,16 +1,18 @@
 import React from 'react';
-import { ArrowRightIcon, XIcon } from '@heroicons/react/solid';
+import { ArrowRightIcon, XIcon, TrashIcon } from '@heroicons/react/solid';
 
 export default function Item(props) {
 
     const handleItemDowngrade = () => {
-        console.log("[Item] Downgrading item: " + props.title);
         props.handleItemDowngrade(props.title, props.boardTitle);
     }
 
     const handleItemUpgrade = () => {
-        console.log("[Item] Upgrading item: " + props.title);
         props.handleItemUpgrade(props.title, props.boardTitle);
+    }
+
+    const handleItemDelete = () => {
+        props.handleItemDelete(props.title, props.boardTitle);
     }
 
     return (
@@ -19,6 +21,7 @@ export default function Item(props) {
             <div className="flex flex-row">
                 {props.boardTitle !== "Done" ? <ArrowRightIcon className="h-5 w-5 text-white" onClick={handleItemUpgrade}/> : "" }
                 {props.boardTitle !== "To Do" ? <XIcon className="h-5 w-5 text-white" onClick={handleItemDowngrade}/> : "" }
+                <TrashIcon className="h-5 w-5 text-white" onClick={handleItemDelete}/>
             </div>
         </div>
     );

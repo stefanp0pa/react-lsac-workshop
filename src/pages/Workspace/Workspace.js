@@ -2,7 +2,7 @@ import React from 'react';
 import Board from '../../components/Board/Board';
 import AddTaskForm from '../../components/AddTaskForm/AddTaskForm';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Workspace() {
 
@@ -14,65 +14,56 @@ export default function Workspace() {
         doneTasks: ['Task 7', 'Task 8']
     });
 
-    const addNewTask = (newTask) => {
-        console.log("[Workspace] New task: " + newTask);
+    useEffect(() => {
+        console.log("[Workspace] Updating tasks");
+        }, [tasks.toDoTasks]);
+    
+    useEffect(() => {
+        console.log("[Workspace] Random effect");
+    });
 
+    const addNewTask = (newTask) => {
         const newToDoTasks = [...tasks.toDoTasks, newTask];
-        setTasks({
-            ...tasks,
-            toDoTasks: newToDoTasks
-        });
+        setTasks({...tasks, toDoTasks: newToDoTasks });
     }
 
     const upgradeToDoProgress = (title) => {
-        console.log("[Workspace] Upgrading ToDo-Progress task: " + title);
         const newToDos = tasks.toDoTasks.filter(task => task !== title);
         const newProgress = [...tasks.progressTasks, title];
-
-        setTasks({
-            toDoTasks: newToDos,
-            progressTasks: newProgress,
-            doneTasks: tasks.doneTasks
-        });
+        setTasks({...tasks, toDoTasks: newToDos, progressTasks: newProgress});
     }
 
     const downgradeProgressToDo = (title) => {
-        console.log("[Workspace] Downgrading Progress-ToDo task: " + title);
-
         const newProgress = tasks.progressTasks.filter(task => task !== title);
         const newToDos = [...tasks.toDoTasks, title];
-        
-        setTasks({
-            toDoTasks: newToDos,
-            progressTasks: newProgress,
-            doneTasks: tasks.doneTasks
-        });
+        setTasks({...tasks, progressTasks: newProgress, toDoTasks: newToDos});
     }
 
     const upgradeProgressDone = (title) => {
-        console.log("[Workspace] Upgrading Progress-Done task: " + title);
-
         const newProgress = tasks.progressTasks.filter(task => task !== title);
         const newDone = [...tasks.doneTasks, title];
-
-        setTasks({
-            toDoTasks: tasks.toDoTasks,
-            progressTasks: newProgress,
-            doneTasks: newDone
-        });
+        setTasks({...tasks, progressTasks: newProgress, doneTasks: newDone});
     }
 
     const downgradeDoneProgress = (title) => {
-        console.log("[Workspace] Downgrading Done-Progress task: " + title);
-
         const newDone = tasks.doneTasks.filter(task => task !== title);
         const newProgress = [...tasks.progressTasks, title];
+        setTasks({...tasks, doneTasks: newDone, progressTasks: newProgress});
+    }
 
-        setTasks({
-            toDoTasks: tasks.toDoTasks,
-            progressTasks: newProgress,
-            doneTasks: newDone
-        });
+    const deleteTaskFromTodo = (title) => {
+        const newToDos = tasks.toDoTasks.filter(task => task !== title);
+        setTasks({...tasks, toDoTasks: newToDos});
+    }
+
+    const deleteTaskFromProgress = (title) => {
+        const newProgress = tasks.progressTasks.filter(task => task !== title);
+        setTasks({...tasks, progressTasks: newProgress});
+    }
+
+    const deleteTaskFromDone = (title) => {
+        const newDone = tasks.doneTasks.filter(task => task !== title);
+        setTasks({...tasks, doneTasks: newDone});
     }
 
     return (
@@ -88,19 +79,22 @@ export default function Workspace() {
                     upgradeProgressDone={upgradeProgressDone} 
                     downgradeDoneProgress={downgradeDoneProgress}
                     downgradeProgressToDo={downgradeProgressToDo}
-                    upgradeToDoProgress={upgradeToDoProgress}/>
+                    upgradeToDoProgress={upgradeToDoProgress}
+                    deleteTask = {deleteTaskFromTodo}/>
 
                 <Board className="mr-1" title={boardTitles[1]} items={tasks.progressTasks}
                     upgradeProgressDone={upgradeProgressDone}
                     downgradeDoneProgress={downgradeDoneProgress}
                     downgradeProgressToDo={downgradeProgressToDo}
-                    upgradeToDoProgress={upgradeToDoProgress}/>
+                    upgradeToDoProgress={upgradeToDoProgress}
+                    deleteTask = {deleteTaskFromProgress}/>
 
                 <Board className="mr-1" title={boardTitles[2]} items={tasks.doneTasks}
                     upgradeProgressDone={upgradeProgressDone}
                     downgradeDoneProgress={downgradeDoneProgress}
                     downgradeProgressToDo={downgradeProgressToDo}
-                    upgradeToDoProgress={upgradeToDoProgress}/>
+                    upgradeToDoProgress={upgradeToDoProgress}
+                    deleteTask = {deleteTaskFromDone}/>
             </div>
         </div>
     );
