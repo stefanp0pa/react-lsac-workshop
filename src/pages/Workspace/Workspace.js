@@ -7,9 +7,6 @@ import { useState } from 'react';
 export default function Workspace() {
 
     const [boardTitles, setBoardTitles] = useState(['To Do', 'In Progress', 'Done']);
-    // const [toDoTasks, setToDoTasks] = useState(['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"]);
-    // const [progressTasks, setProgressTasks] = useState(['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug']);
-    // const [doneTasks, setDoneTasks] = useState(['Task 7', 'Task 8']);
 
     const [tasks, setTasks] = useState({
         toDoTasks: ['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"],
