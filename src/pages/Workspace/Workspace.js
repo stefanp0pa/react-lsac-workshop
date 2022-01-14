@@ -4,23 +4,63 @@ import AddTaskForm from '../../components/AddTaskForm/AddTaskForm';
 
 import { useState, useEffect } from 'react';
 
-export default function Workspace() {
 
-    const [boardTitles, setBoardTitles] = useState(['To Do', 'In Progress', 'Done']);
+async function fetchBoardTitles() {
+    return await Promise.resolve(['To Do', 'In Progress', 'Done']);
+}
 
-    const [tasks, setTasks] = useState({
+async function fetchTasks() {
+    return await Promise.resolve({
         toDoTasks: ['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"],
         progressTasks: ['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug'],
         doneTasks: ['Task 7', 'Task 8']
     });
+}
+
+export default function Workspace() {
+
+    const [boardTitles, setBoardTitles] = useState([]);
+    const [tasks, setTasks] = useState({ toDoTasks: [], progressTasks: [], doneTasks: [] });
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
+        console.log('[Workspace] Fetching board titles...');
+        const result = await fetchBoardTitles();
+        setBoardTitles(result);
+    }, []);
+
+    // How to do it right
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
+        console.log("[Workspace] Fetching tasks...");
+        const result = await fetchTasks();
+        setTasks({ 
+            toDoTasks: result.toDoTasks, 
+            progressTasks: result.progressTasks, 
+            doneTasks: result.doneTasks });
+    }, []);
 
     useEffect(() => {
-        console.log("[Workspace] Updating tasks");
-        }, [tasks.toDoTasks]);
-    
+        console.log("[Workspace] ToDo board affected");
+    }, [tasks.toDoTasks]);
+
     useEffect(() => {
-        console.log("[Workspace] Random effect");
-    });
+        console.log("[Workspace] InProgress board affected");
+    }, [tasks.progressTasks]);
+
+    useEffect(() => {
+        console.log("[Workspace] Done board affected");
+    }, [tasks.doneTasks]);
+
+    // How NOT to do it right
+    // useEffect(async () => {
+    //     console.log("[Workspace] Fetching tasks...");
+    //     const result = await fetchTasks();
+    //     setTasks({ 
+    //         toDoTasks: result.toDoTasks, 
+    //         progressTasks: result.progressTasks, 
+    //         doneTasks: result.doneTasks });
+    // });
 
     const addNewTask = (newTask) => {
         const newToDoTasks = [...tasks.toDoTasks, newTask];
