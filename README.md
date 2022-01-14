@@ -7,7 +7,7 @@
 - State and lifecyle
 - Props and data-binding
 - React Hooks
-- Bonus: Tailwind CSS
+- **Bonus**: Tailwind CSS
 
 ## Prerequisites
 
