@@ -1,5 +1,5 @@
-# LSAC React Workshop
-
+# React Workshop
+> Workshop made with <3 by [Stefan Popa](https://github.com/stefanp0pa)
 ## Workshop Plan
 - Introduction about React
 - Declarative and imperative paradigms
