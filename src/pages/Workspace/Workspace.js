@@ -7,12 +7,34 @@ import { useState } from 'react';
 export default function Workspace() {
 
     const [boardTitles, setBoardTitles] = useState(['To Do', 'In Progress', 'Done']);
-    const [toDoTasks, setToDoTasks] = useState(['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"]);
-    const [progressTasks, setProgressTasks] = useState(['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug']);
-    const [doneTasks, setDoneTasks] = useState(['Task 7', 'Task 8']);
+    // const [toDoTasks, setToDoTasks] = useState(['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"]);
+    // const [progressTasks, setProgressTasks] = useState(['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug']);
+    // const [doneTasks, setDoneTasks] = useState(['Task 7', 'Task 8']);
+
+    const [tasks, setTasks] = useState({
+        toDoTasks: ['Task 1', 'Task 2', 'Task 3', 'Some other random task', "Epic task", "Epic task 1"],
+        progressTasks: ['Task 4', 'Task 5', 'Task 6', 'Fix the last week bug'],
+        doneTasks: ['Task 7', 'Task 8']
+    });
 
     const addNewTask = (newTask) => {
         console.log("[Workspace] New task: " + newTask);
+    }
+
+    const upgradeToDoProgress = (title) => {
+        console.log("[Workspace] Upgrading ToDo-Progress task: " + title);
+    }
+
+    const downgradeProgressToDo = (title) => {
+        console.log("[Workspace] Downgrading Progress-ToDo task: " + title);
+    }
+
+    const upgradeProgressDone = (title) => {
+        console.log("[Workspace] Upgrading Progress-Done task: " + title);
+    }
+
+    const downgradeDoneProgress = (title) => {
+        console.log("[Workspace] Downgrading Done-Progress task: " + title);
     }
 
     return (
@@ -24,9 +46,23 @@ export default function Workspace() {
                 <AddTaskForm addNewTask = {addNewTask}/>
             </div>
             <div className="flex flex-row justify-between mt-10 ml-4 mr-4">
-                <Board className="mr-1" title={boardTitles[0]} items={toDoTasks}/>
-                <Board className="mr-1" title={boardTitles[1]} items={progressTasks}/>
-                <Board className="mr-1" title={boardTitles[2]} items={doneTasks}/>
+                <Board className="mr-1" title={boardTitles[0]} items={tasks.toDoTasks} 
+                    upgradeProgressDone={upgradeProgressDone} 
+                    downgradeDoneProgress={downgradeDoneProgress}
+                    downgradeProgressToDo={downgradeProgressToDo}
+                    upgradeToDoProgress={upgradeToDoProgress}/>
+
+                <Board className="mr-1" title={boardTitles[1]} items={tasks.progressTasks}
+                    upgradeProgressDone={upgradeProgressDone}
+                    downgradeDoneProgress={downgradeDoneProgress}
+                    downgradeProgressToDo={downgradeProgressToDo}
+                    upgradeToDoProgress={upgradeToDoProgress}/>
+
+                <Board className="mr-1" title={boardTitles[2]} items={tasks.doneTasks}
+                    upgradeProgressDone={upgradeProgressDone}
+                    downgradeDoneProgress={downgradeDoneProgress}
+                    downgradeProgressToDo={downgradeProgressToDo}
+                    upgradeToDoProgress={upgradeToDoProgress}/>
             </div>
         </div>
     );

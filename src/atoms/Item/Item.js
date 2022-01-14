@@ -5,12 +5,12 @@ export default function Item(props) {
 
     const handleItemDowngrade = () => {
         console.log("[Item] Downgrading item: " + props.title);
-        props.handleItemDowngrade(props.title);
+        props.handleItemDowngrade(props.title, props.boardTitle);
     }
 
     const handleItemUpgrade = () => {
         console.log("[Item] Upgrading item: " + props.title);
-        props.handleItemUpgrade(props.title);
+        props.handleItemUpgrade(props.title, props.boardTitle);
     }
 
     return (

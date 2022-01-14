@@ -4,12 +4,27 @@ import BoardTitle from '../../atoms/BoardTitle/BoardTitle';
 
 export default function Board(props) {
 
-    const handleItemDowngrade = (title) => {
+    // const [boardTitles, setBoardTitles] = useState(['To Do', 'In Progress', 'Done']);
+
+
+    const handleItemDowngrade = (title, origin) => {
         console.log("[Board] Downgrading item: " + title);
+
+        if (origin === "In Progress") {
+            props.downgradeProgressToDo(title);
+        } else if (origin === "Done") {
+            props.downgradeDoneProgress(title);
+        } else return;
     }
 
-    const handleItemUpgrade = (title) => {
+    const handleItemUpgrade = (title, origin) => {
         console.log("[Board] Upgrading item: " + title);
+
+        if (origin === "To Do") {
+            props.upgradeToDoProgress(title);
+        } else if (origin === "In Progress") {
+            props.upgradeProgressDone(title);
+        }  else return;
     }
 
     return (
