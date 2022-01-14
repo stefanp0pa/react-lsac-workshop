@@ -4,9 +4,6 @@ import BoardTitle from '../../atoms/BoardTitle/BoardTitle';
 
 export default function Board(props) {
 
-    // const [boardTitles, setBoardTitles] = useState(['To Do', 'In Progress', 'Done']);
-
-
     const handleItemDowngrade = (title, origin) => {
         console.log("[Board] Downgrading item: " + title);
 
