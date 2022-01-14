@@ -30,11 +30,14 @@ export default function Board(props) {
                 <BoardTitle title = {props.title}/>
             </div>
             <div>
-                {props.items.map((item, index) => {
-                    return (
-                        <Item key={index} title={item} boardTitle = {props.title} handleItemDowngrade = {handleItemDowngrade} handleItemUpgrade = {handleItemUpgrade}/>
-                    );
-                } )}
+                {
+                    !props.items || props.items.length === 0 ? <p className="text-white text-xl p-2">No items</p> 
+                    : props.items.map((item, index) => {
+                            return (
+                                <Item key={index} title={item} boardTitle = {props.title} handleItemDowngrade = {handleItemDowngrade} handleItemUpgrade = {handleItemUpgrade}/>
+                            );
+                        })
+                }
             </div>
         </div>
     );

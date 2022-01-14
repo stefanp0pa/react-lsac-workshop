@@ -16,22 +16,63 @@ export default function Workspace() {
 
     const addNewTask = (newTask) => {
         console.log("[Workspace] New task: " + newTask);
+
+        const newToDoTasks = [...tasks.toDoTasks, newTask];
+        setTasks({
+            ...tasks,
+            toDoTasks: newToDoTasks
+        });
     }
 
     const upgradeToDoProgress = (title) => {
         console.log("[Workspace] Upgrading ToDo-Progress task: " + title);
+        const newToDos = tasks.toDoTasks.filter(task => task !== title);
+        const newProgress = [...tasks.progressTasks, title];
+
+        setTasks({
+            toDoTasks: newToDos,
+            progressTasks: newProgress,
+            doneTasks: tasks.doneTasks
+        });
     }
 
     const downgradeProgressToDo = (title) => {
         console.log("[Workspace] Downgrading Progress-ToDo task: " + title);
+
+        const newProgress = tasks.progressTasks.filter(task => task !== title);
+        const newToDos = [...tasks.toDoTasks, title];
+        
+        setTasks({
+            toDoTasks: newToDos,
+            progressTasks: newProgress,
+            doneTasks: tasks.doneTasks
+        });
     }
 
     const upgradeProgressDone = (title) => {
         console.log("[Workspace] Upgrading Progress-Done task: " + title);
+
+        const newProgress = tasks.progressTasks.filter(task => task !== title);
+        const newDone = [...tasks.doneTasks, title];
+
+        setTasks({
+            toDoTasks: tasks.toDoTasks,
+            progressTasks: newProgress,
+            doneTasks: newDone
+        });
     }
 
     const downgradeDoneProgress = (title) => {
         console.log("[Workspace] Downgrading Done-Progress task: " + title);
+
+        const newDone = tasks.doneTasks.filter(task => task !== title);
+        const newProgress = [...tasks.progressTasks, title];
+
+        setTasks({
+            toDoTasks: tasks.toDoTasks,
+            progressTasks: newProgress,
+            doneTasks: newDone
+        });
     }
 
     return (
