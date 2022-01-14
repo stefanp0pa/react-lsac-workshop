@@ -4,7 +4,7 @@
 - Introduction about React
 - Declarative and imperative paradigms
 - Components and components hierarchy
-- State and lifecyle
+- State and lifecycle
 - Props and data-binding
 - React Hooks
 - Bonus: Tailwind CSS
@@ -22,7 +22,7 @@ Check for succesful installation by running the following commands in the termin
 ![Node and NPM validation](resources/node-npm-check-terminal.png)
 
 Try to set up a React project by running the following commands in the terminal:
-* `npm install -g create-react-app` (install the React utilitary globally)
+* `npm install -g create-react-app` (install the React utility globally)
 * `npx create-react-app my-react-app` (create a new React project)
 * `cd my-react-app` (create a new directory)
 * `npm start` (start the React app - by default on port 3000)
@@ -30,15 +30,15 @@ Try to set up a React project by running the following commands in the terminal:
   
 ![react-first-run](resources/react-first-run.png)
 
-Basic React set up could be followed [here](https://www.codecademy.com/article/how-to-create-a-react-app). This reference explains the steps in detail and gives further explication about a project structure. In order to install any available package, check the [NPM official page](https://www.npmjs.com/) for that package.
+Basic React setup could be followed [here](https://www.codecademy.com/article/how-to-create-a-react-app). This reference explains the steps in detail and gives further explication about a project structure. In order to install any available package, check the [NPM official page](https://www.npmjs.com/) for that package.
 
 ## What is React?
 
-[React.js](https://reactjs.org/) is one of the most popular (maybe the most popular) solution for building Web applications, which follows a declarative paradigm based on creating reusable components. React is a common solution among other frameworks such as [Angular](https://angular.io/), [Vue.js](https://vuejs.org/), and [Ember.js](https://emberjs.com/) and is rather popular among developers who are familiar with the JavaScript language.
+[React.js](https://reactjs.org/) is one of the most popular (maybe the most popular) solutions for building Web applications, which follows a declarative paradigm based on creating reusable components. React is a common solution among other frameworks such as [Angular](https://angular.io/), [Vue.js](https://vuejs.org/), and [Ember.js](https://emberjs.com/) and is rather popular among developers who are familiar with the JavaScript language.
 
 ![framework-libraries](resources/framework-libraries.png)
 
-Frameworks such as **Angular** or **Vue.js** are in general better suited for complex and intensive production projects due to their rigurous structure and modularity, whereas **React** would be a better pick for simpler applications. Nevertheless, there are definitely popular projects that have employed React as a [solution](https://hashnode.com/post/what-are-some-popular-websites-that-use-reactjs-ciibz8fb8016nj3xto8stgu4e) (e.g. Facebook, Instagram, New York Times, etc.).
+Frameworks such as **Angular** or **Vue.js** are in general better suited for complex and intensive production projects due to their rigorous structure and modularity, whereas **React** would be a better pick for simpler applications. Nevertheless, there are definitely popular projects that have employed React as a [solution](https://hashnode.com/post/what-are-some-popular-websites-that-use-reactjs-ciibz8fb8016nj3xto8stgu4e) (e.g. Facebook, Instagram, New York Times, etc.).
 
 ### Features
 
@@ -66,7 +66,7 @@ The following syntaxes reflect the two paradigms:
 - Declarative
   * `return View(color: Red, count: 180)`
 
-What does this mean for React? It means that views are in general **immutable**, only **state mutates**. State describe how components are drawn and which components are visible or not. Every state mutate *triggers* the re-rendering of the UI and the browser "redraws" the view according to the new state.
+What does this mean for React? It means that views are in general **immutable**, only **state mutates**. The state describes how components are drawn and which components are visible or not. Every state mutates *triggers* the re-rendering of the UI and the browser "redraws" the view according to the new state.
 
 - **Imperative**: you are the chef and you cook by the recipe
 - **Declarative**: you write the recipe and the compiler will "cook" it
@@ -75,11 +75,11 @@ What does this mean for React? It means that views are in general **immutable**,
 
 ### Components
 
-React allows for creating reusable components that are organized in a parent-child type hierarchy. Components communicate mostly via **props** which are basically parameters that are passed from the parent component to its children.
+React allows for creating reusable components that are organized in a parent-child type hierarchy. Components communicate mostly via **props** which are, basically, parameters that are passed from the parent component to its children.
 
 `<CarComponent color={this.color} name={this.color == "red" ? "Ferrari" : "Lamborghini" }/>`
 
-Traditionally, components are of two types: class-based and functional. Class components are generally used because they can have internal state, while functional components are stateless and shorter to write. Following the React Hooks update, functional components can manage state as well and have become the default standard for modern React development.
+Traditionally, components are of two types: class-based and functional. Class components are generally used because they can have an internal state, while functional components are stateless and shorter to write. Following the React Hooks update, functional components can manage state as well and have become the default standard for modern React development.
 
 ![class-functional-diagram](resources/class-functional-components.png)
 
@@ -94,7 +94,7 @@ The React component lifecycle has the following 3 phases:
 
 ### React Hooks
 
-**React Hooks** are a new addition in React 16.8 and let you manage state and other React features without writing a class. React Hooks have become the default modern standard of writing React componenets, though classes are still an available option. These hooks are special methods that let you achieve different functionalities:
+**React Hooks** is a new addition in React 16.8 and let you manage state and other React features without writing a class. React Hooks have become the default modern standard of writing React components, though classes are still an available option. These hooks are special methods that let you achieve different functionalities:
 - manage state
 - trigger side-effects when state mutates
 - manage context
@@ -117,11 +117,10 @@ To set up Tailwind for our project, follow the [link](https://tailwindcss.com/do
 ![lsac-trello](resources/lsac-trello.png)
 
 ## Useful links
-* [React Router](https://v5.reactrouter.com/web/guides/quick-start) (for this workshop, try to install the old version 5)
 * [Set up Tailwind CSS for React app](https://tailwindcss.com/docs/guides/create-react-app)
 * [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
 * [Chrome React Developer Tools Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-* [TailwindCSS Heroicons](https://github.com/tailwindlabs/heroicons) and [official site](https://heroicons.com/)
+* [Tailwind CSS Heroicons](https://github.com/tailwindlabs/heroicons) and [official site](https://heroicons.com/)
 * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
   - [useState](https://reactjs.org/docs/hooks-state.html)
   - [useEffect](https://reactjs.org/docs/hooks-effect.html)
